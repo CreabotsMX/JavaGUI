@@ -1,42 +1,79 @@
-public class Triangulo extends Rectangulo 
+public class Triangulo extends FigurasGeometricas 
 {
-    private double hipotenusa;
+    private double lado1;
+    private double lado2;
+    private double lado3;
     
     //Constructores
     Triangulo()
     {
-        setBase(0);
-        setAltura(0);
-        setHipotenusa();
+        super();
+        setLado1(0);
+        setLado2(0);
+        setLado3(0);
     }
     
-    Triangulo(double b, double h)
+    Triangulo(double lado1, double lado2, double lado3)
     {
-        setBase(b);
-        setAltura(h);
-        setHipotenusa();
+        super();
+        setLado1(lado1);
+        setLado2(lado2);
+        setLado3(lado3);
     }
     
     //Getters
-    private double getHipotenusa()
+    public double getLado1()
     {
-        return hipotenusa;
+        return lado1;
+    }
+
+    public double getLado2()
+    {
+        return lado2;
+    }
+
+    public double getLado3()
+    {
+        return lado3;
     }
     
     //Setters
-    private void setHipotenusa()
+    public void setLado1(double l1)
     {
-        if(getBase() > 0 &&  getAltura() > 0)
+        if(l1 > 0)
         {
-            hipotenusa = Math.sqrt(Math.pow(getBase(),2) + Math.pow(getAltura(),2));   
+            lado1 = l1;   
         }
         
-        else
+        if(getLado1() > 0 &&  getLado2() > 0 && getLado3() > 0)
         {
-            hipotenusa = 0;
+            calcularPerimetro();
+            calcularArea();
+        }     
+    }
+
+    public void setLado2(double l2)
+    {
+        if(l2 > 0)
+        {
+            lado2 = l2;   
         }
         
-        if(getBase() > 0 &&  getAltura() > 0 && getHipotenusa() > 0)
+        if(getLado1() > 0 &&  getLado2() > 0 && getLado3() > 0)
+        {
+            calcularPerimetro();
+            calcularArea();
+        }     
+    }
+
+    public void setLado3(double l3)
+    {
+        if(l3 > 0)
+        {
+            lado3 = l3;   
+        }
+        
+        if(getLado1() > 0 &&  getLado2() > 0 && getLado3() > 0)
         {
             calcularPerimetro();
             calcularArea();
@@ -44,18 +81,21 @@ public class Triangulo extends Rectangulo
     }
 
     //Otros
-    private void calcularPerimetro()
+    protected void calcularPerimetro()
     {
-        setPerimetro(getBase() + getAltura() + getHipotenusa());
+        setPerimetro(getLado1() + getLado2() + getLado3());
     }
 
-    private void calcularArea()
+    protected void calcularArea()
     {
-        setArea(getBase() * getAltura() / 2);
+        // Fórmula de Herón para calcular el área de un triángulo
+        double s = getPerimetro() / 2;
+        double area = Math.sqrt(s * (s - lado1) * (s - lado2) * (s - lado3));
+        setArea(area);
     }
 
     public String toString()
     {
-        return "Hipotenusa = " + getHipotenusa() + " P = " + getPerimetro() + " A = " + getArea(); 
+        return " P = " + getPerimetro() + " A = " + getArea(); 
     }
 }

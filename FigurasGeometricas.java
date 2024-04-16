@@ -1,4 +1,4 @@
-public class FigurasGeometricas
+public abstract class FigurasGeometricas
 {
     //Atributos
     private double perimetro;
@@ -32,4 +32,10 @@ public class FigurasGeometricas
     {
         area = a;
     }
+    
+    
+    // Métodos abstractos
+    protected abstract void calcularPerimetro();
+
+    protected abstract void calcularArea();
 }

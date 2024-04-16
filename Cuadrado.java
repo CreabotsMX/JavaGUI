@@ -6,11 +6,13 @@ public class Cuadrado extends FigurasGeometricas
     //Constructores
     Cuadrado()
     {
+        super();
         setLado(0);        
     }
     
     Cuadrado(double l)
     {
+        super();
         setLado(l);
     }
     
@@ -32,12 +34,12 @@ public class Cuadrado extends FigurasGeometricas
     }
       
     //Otros
-    private void calcularPerimetro()
+    protected void calcularPerimetro()
     {
         setPerimetro(4 * lado);
     }
     
-    private void calcularArea()
+    protected void calcularArea()
     {
         setArea(lado * lado);
     }

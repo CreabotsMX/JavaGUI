@@ -6,12 +6,14 @@ public class Rectangulo extends FigurasGeometricas
     
     Rectangulo()
     {
+        super();
         setBase(0);
         setAltura(0);
     }
     
     Rectangulo(double b, double h)
     {
+        super();
         setBase(b);
         setAltura(h);
     }
@@ -35,6 +37,7 @@ public class Rectangulo extends FigurasGeometricas
         
         if(getBase() > 0 && getAltura() > 0)
         {
+
             calcularPerimetro();
             calcularArea();
         }
@@ -53,12 +56,12 @@ public class Rectangulo extends FigurasGeometricas
     }
     
     //Otros
-    private void calcularPerimetro()
+    protected void calcularPerimetro()
     {
         setPerimetro((2*getBase())+(2*getAltura()));
     }
     
-    private void calcularArea()
+    protected void calcularArea()
     {
         setArea(getBase()*getAltura());
     }
