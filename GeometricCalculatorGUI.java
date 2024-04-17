@@ -3,7 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GeometricCalculatorGUI extends JFrame implements ActionListener {
+public class GeometricCalculatorGUI extends JFrame implements ActionListener 
+{
     private JLabel label1, label2;
     private JTextField textField1, textField2, textField3;
     private JButton calculateButton;
@@ -15,7 +16,8 @@ public class GeometricCalculatorGUI extends JFrame implements ActionListener {
     private Rectangulo rectangulo;
     private Triangulo triangulo;
 
-    public GeometricCalculatorGUI() {
+    public GeometricCalculatorGUI() 
+    {
         setTitle("Calculadora Figuras Geometricas");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,9 +35,10 @@ public class GeometricCalculatorGUI extends JFrame implements ActionListener {
         textField3.setEditable(false);
         
         calculateButton = new JButton("Calcular");
+        
         squareRadioButton = new JRadioButton("Cuadrado");
         rectangleRadioButton = new JRadioButton("Rectangulo");
-        triangleRadioButton = new JRadioButton("Trinagulo");
+        triangleRadioButton = new JRadioButton("Triangulo Rectangulo");
         circleRadioButton = new JRadioButton("Circulo");
 
         figuresButtonGroup = new ButtonGroup();
@@ -50,6 +53,7 @@ public class GeometricCalculatorGUI extends JFrame implements ActionListener {
         circleRadioButton.addActionListener(this);
         calculateButton.addActionListener(this);
 
+        // Poner los componentes en el Frame, en el orden que quiero que aparezcan
         add(squareRadioButton);
         add(rectangleRadioButton);
         add(triangleRadioButton);
@@ -116,7 +120,7 @@ public class GeometricCalculatorGUI extends JFrame implements ActionListener {
                 {
                     double base = Double.parseDouble(textField1.getText());
                     double altura = Double.parseDouble(textField2.getText());
-                    triangulo = new Triangulo(base,altura);
+                    triangulo = new TrianguloRectangulo(base,altura);
                     textField3.setText(triangulo.toString());
                 }
                 
@@ -126,7 +130,16 @@ public class GeometricCalculatorGUI extends JFrame implements ActionListener {
                 }
             }
             
+            //Circulo
+            else if (circleRadioButton.isSelected()) 
+            {
+                
+            }
             
+            else
+            {
+                textField3.setText("Selecciona una opcion");
+            }
         } 
         
         else 
@@ -137,6 +150,7 @@ public class GeometricCalculatorGUI extends JFrame implements ActionListener {
                 label2.setText("");
                 textField1.setText("0");
                 textField2.setText("0");
+                textField3.setText("");
                 textField1.setVisible(true);
                 textField2.setVisible(false);            
             } 
@@ -146,6 +160,7 @@ public class GeometricCalculatorGUI extends JFrame implements ActionListener {
                 label2.setText("Altura:");
                 textField1.setText("0");
                 textField2.setText("0");
+                textField3.setText("");
                 textField1.setVisible(true);
                 textField2.setVisible(true);              
             } 
@@ -155,6 +170,7 @@ public class GeometricCalculatorGUI extends JFrame implements ActionListener {
                 label2.setText("Altura:");
                 textField1.setText("0");
                 textField2.setText("0");
+                textField3.setText("");
                 textField1.setVisible(true);
                 textField2.setVisible(true);
             } 
@@ -164,6 +180,7 @@ public class GeometricCalculatorGUI extends JFrame implements ActionListener {
                 label2.setText("");
                 textField1.setText("0");
                 textField2.setText("0");
+                textField3.setText("");
                 textField2.setVisible(false);
                 textField1.setVisible(true);
             }
